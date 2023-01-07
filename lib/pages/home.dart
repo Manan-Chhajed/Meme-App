@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../widgets/text_button.dart';
+
 class UserHome extends StatefulWidget {
   const UserHome({super.key});
 
@@ -46,53 +48,19 @@ class _UserHomeState extends State<UserHome> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.black),
-                  ),
-                ),
-              ),
-              onPressed: () {
+            TextBtn(
+              text: 'Gallery',
+              color: Colors.black,
+              onPress: () {
                 pickImage(ImageSource.gallery);
               },
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                child: const Text(
-                  'Gallery',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
             ),
-            TextButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.black),
-                  ),
-                ),
-              ),
-              onPressed: () {
+            TextBtn(
+              text: 'Camera',
+              color: Colors.black,
+              onPress: () {
                 pickImage(ImageSource.camera);
               },
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                child: const Text(
-                  'Camera',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
             ),
           ],
         ),
@@ -100,50 +68,19 @@ class _UserHomeState extends State<UserHome> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.black),
-                  ),
-                ),
-              ),
-              onPressed: () {},
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                child: const Text(
-                  'Download',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
-            ),
-            TextButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.black),
-                  ),
-                ),
-              ),
-              onPressed: (){
+            TextBtn(
+              text: 'Download',
+              color: Colors.black,
+              onPress: () {
+                pickImage(ImageSource.gallery);
               },
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                child: const Text(
-                  'Share',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
+            ),
+            TextBtn(
+              text: 'Share',
+              color: Colors.black,
+              onPress: () {
+                pickImage(ImageSource.camera);
+              },
             ),
           ],
         ),
