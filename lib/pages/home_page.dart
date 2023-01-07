@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meme_app/pages/home.dart';
+import 'package:meme_app/pages/meme%20creator/home.dart';
 import 'package:meme_app/pages/latest_memes.dart';
-import 'package:meme_app/pages/profile.dart';
+import 'package:meme_app/pages/profile/profile.dart';
 
-import 'settings.dart';
+import 'settings/settings.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
