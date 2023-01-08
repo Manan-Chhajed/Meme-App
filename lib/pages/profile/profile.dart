@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../ads/ads_page.dart';
 import 'profile_menu.dart';
 
 class UserProfile extends StatelessWidget {
@@ -13,10 +14,11 @@ class UserProfile extends StatelessWidget {
         children: [
           SizedBox(height: 20),
           ProfileMenu(
-            text: "My Account",
-            icon: "assets/icons/house.png",
+            text: "Show Ads",
+            icon: "assets/icons/adwords.png",
             press: () => {
-              print("My Account"),
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => AdsPage()))
             },
           ),
           ProfileMenu(

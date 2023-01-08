@@ -50,6 +50,9 @@ dependencies:
   # for sharing the image
   share_plus: ^6.3.0
   path_provider: ^2.0.11
+  google_mobile_ads: ^2.3.0
+
+  # for ads
 
 
 dev_dependencies:

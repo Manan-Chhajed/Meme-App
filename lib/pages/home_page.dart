@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const double _size = 27;
+    const double size = 27;
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -47,49 +47,49 @@ class _HomePageState extends State<HomePage> {
         ),
         elevation: 0.0,
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
           onPressed: () {},
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
         ],
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex:
-              _selectedIndex, // so when we tap, that one gets highlited
-          onTap: _navigateBottomBar, // sets the _selectedIndex
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage("assets/icons/home.png"),
-                size: _size,
-              ),
-              label: 'Home',
+        currentIndex: _selectedIndex, // so when we tap, that one gets highlited
+        onTap: _navigateBottomBar, // sets the _selectedIndex
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("assets/icons/home.png"),
+              size: size,
             ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage("assets/icons/trending-topic.png"),
-                size: _size,
-              ),
-              label: 'Memes',
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("assets/icons/trending-topic.png"),
+              size: size,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-                size: _size,
-              ),
-              label: 'Settings',
+            label: 'Memes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+              size: size,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: _size,
-              ),
-              label: 'Account',
+            label: 'Settings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              size: size,
             ),
-          ]),
+            label: 'Account',
+          ),
+        ],
+      ),
     );
   }
 }
