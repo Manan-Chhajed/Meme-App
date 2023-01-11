@@ -7,6 +7,8 @@ class TextInfo {
   Color color;
   FontWeight fontWeight;
   FontStyle fontStyle;
+  double fontSize;
+  TextAlign textAlign;
 
   TextInfo({
     required this.text,
@@ -15,5 +17,7 @@ class TextInfo {
     required this.color,
     required this.fontWeight,
     required this.fontStyle,
+    required this.fontSize,
+    required this.textAlign,
   });
 }
