@@ -3,6 +3,7 @@ import 'package:meme_app/pages/meme%20creator/home.dart';
 import 'package:meme_app/pages/latest_memes.dart';
 import 'package:meme_app/pages/profile/profile.dart';
 
+import '../consts/colors.dart';
 import 'settings/settings.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,11 +40,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     const double size = 27;
     return Scaffold(
+      // backgroundColor: Color.fromRGBO(162, 165, 165, 1),
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(53, 62, 88, 1),
+        // backgroundColor: Color.fromARGB(255, 208, 208, 63),
         title: Center(
-          child: Text(
-            _titles[_selectedIndex],
-          ),
+          child: Text(_titles[_selectedIndex], style: TextStyle()),
         ),
         elevation: 0.0,
         leading: IconButton(
@@ -56,6 +58,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Color.fromRGBO(255, 120, 44, 1),
+        backgroundColor: Colors.white,
+        elevation: 0.0,
         currentIndex: _selectedIndex, // so when we tap, that one gets highlited
         onTap: _navigateBottomBar, // sets the _selectedIndex
         type: BottomNavigationBarType.fixed,

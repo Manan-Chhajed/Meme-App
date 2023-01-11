@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meme_app/pages/image%20editor/image_editor_page.dart';
 
 import '../../widgets/text_button.dart';
 import '../ads/ads_page.dart';
@@ -12,10 +13,10 @@ class UserSettings extends StatelessWidget {
       body: Center(
         child: TextBtn(
           onPress: () {
-            // Navigator.of(context)
-            //     .push(MaterialPageRoute(builder: (context) => AdsPage()));
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AdsPage()));
           },
-          text: 'Show Ads',
+          text: 'Open Image Editor',
           color: Colors.black,
         ),
       ),

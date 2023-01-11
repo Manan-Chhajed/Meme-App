@@ -25,7 +25,9 @@ class _AdsPageState extends State<AdsPage> {
   void _initInterstitialAd() {
     InterstitialAd.load(
       // adUnitId: "ca-app-pub-3940256099942544/1033173712",
-      adUnitId: "ca-app-pub-3940256099942544/8691691433",
+      // adUnitId: "ca-app-pub-3940256099942544/8691691433",
+      // my own test id
+      adUnitId: "ca-app-pub-4441763398481537/7735811790",
       request: AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: onAdLoaded,
@@ -37,9 +39,9 @@ class _AdsPageState extends State<AdsPage> {
   _initBannerAd() {
     _bannerAd = BannerAd(
       size: AdSize.banner,
-      // adUnitId: "ca-app-pub-4441763398481537/5116020337",
+      adUnitId: "ca-app-pub-4441763398481537/5116020337",
       // test id
-      adUnitId: "ca-app-pub-3940256099942544/6300978111",
+      // adUnitId: "ca-app-pub-3940256099942544/6300978111",
       // adUnitId: adUnitId,
       listener: BannerAdListener(
         onAdLoaded: (ad) {
@@ -59,15 +61,15 @@ class _AdsPageState extends State<AdsPage> {
     _interstitialAd = ad;
     _isInterstitialAdLoaded = true;
 
-    _interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
-        onAdDismissedFullScreenContent: (ad) {
-          // call some other event after ad shown
+    _interstitialAd.fullScreenContentCallback =
+        FullScreenContentCallback(onAdDismissedFullScreenContent: (ad) {
+      // call some other event after ad shown
 
-          _interstitialAd.dispose(); // need to dispose otherwise it will stay in memeory forever
-        },
-        onAdFailedToShowFullScreenContent: (ad, error) {
-          _interstitialAd.dispose();
-        });
+      _interstitialAd
+          .dispose(); // need to dispose otherwise it will stay in memeory forever
+    }, onAdFailedToShowFullScreenContent: (ad, error) {
+      _interstitialAd.dispose();
+    });
   }
 
   @override

@@ -6,8 +6,10 @@ import 'package:meme_app/pages/home_page.dart';
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.white, // navigation bar color
-    statusBarColor: Colors.blue, // status bar color
+    systemNavigationBarIconBrightness: Brightness.dark,
+    statusBarColor: Color.fromRGBO(53, 62, 88, 1), // status bar color
   ));
+  // for google admob
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
   runApp(const MyApp());
@@ -23,6 +25,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // textTheme: GoogleFonts.robotoTextTheme(
+        //   Theme.of(context).textTheme,
+        // ),
       ),
       home: const HomePage(),
     );

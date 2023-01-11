@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:meme_app/pages/image%20editor/image_editor_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 
@@ -40,6 +41,7 @@ class _UserHomeState extends State<UserHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -108,15 +110,22 @@ class _UserHomeState extends State<UserHome> {
                   },
                 ),
                 TextBtn(
-                  text: 'Share',
+                  text: 'Edit Image mf',
                   color: Colors.black,
                   onPress: () {
-                    pickImage(ImageSource.camera);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            EditImageScreen(selectedImage: image!.path)));
                   },
                 ),
               ],
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 500),
+            Container(
+              height: 200,
+              color: Colors.red,
+              child: Text("Hello"),
+            ),
           ],
         ),
       ),
