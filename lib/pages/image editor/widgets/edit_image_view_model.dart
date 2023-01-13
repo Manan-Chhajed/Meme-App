@@ -1,11 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:meme_app/pages/image%20editor/image_editor_page.dart';
 import 'package:meme_app/pages/image%20editor/models/text_info.dart';
 import 'package:meme_app/pages/image%20editor/widgets/default_button.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:screenshot/screenshot.dart';
 
 abstract class EditImageViewModel extends State<EditImageScreen> {
   TextEditingController textEditingController = TextEditingController();
   TextEditingController creatorText = TextEditingController();
+  ScreenshotController screenshotController = ScreenshotController();
 
   List<TextInfo> texts = [];
   int currentIndex = 0;
@@ -26,6 +31,30 @@ abstract class EditImageViewModel extends State<EditImageScreen> {
       ),
     );
   }
+
+    saveToGallery(BuildContext context) {
+    if (texts.isNotEmpty) {
+      screenshotController.capture().then((Uint8List? image) {
+        saveImage(image!);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Image saved to gallery.'),
+          ),
+        );
+      }).catchError((err) => print(err));
+    }
+  }
+
+  saveImage(Uint8List bytes) async {
+    final time = DateTime.now()
+        .toIso8601String()
+        .replaceAll('.', '-')
+        .replaceAll(':', '-');
+    final name = "screenshot_$time";
+    await [Permission.storage].request();
+    await ImageGallerySaver.saveImage(bytes, name: name);
+  }
+
 
   removeText(BuildContext context) {
     setState(() {

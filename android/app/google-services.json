@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "141485666225",
+    "project_id": "meme-app-51f1e",
+    "storage_bucket": "meme-app-51f1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141485666225:android:4b9a5db733cdc29e161790",
+        "android_client_info": {
+          "package_name": "com.example.meme_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141485666225-1u3053qlk2r1mi7mfah306k3ec12ji07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0WwPEvbBYHR140zlsFq6aMY4inG8ufQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141485666225-1u3053qlk2r1mi7mfah306k3ec12ji07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

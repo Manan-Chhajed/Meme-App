@@ -31,7 +31,7 @@ class _UserHomeState extends State<UserHome> {
 
       if (pickedImage == null) return;
 
-      final imageTemporary = File(pickedImage!.path);
+      final imageTemporary = File(pickedImage.path);
       setState(() => this.image = imageTemporary);
     } on PlatformException catch (e) {
       print(e);

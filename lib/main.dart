@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -9,10 +10,11 @@ void main() async {
     systemNavigationBarIconBrightness: Brightness.dark,
     statusBarColor: Color.fromRGBO(53, 62, 88, 1), // status bar color
   ));
-  // for google admob
+  // for google admob and firebase
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
-  runApp(const MyApp());
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

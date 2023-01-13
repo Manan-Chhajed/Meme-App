@@ -1,10 +1,14 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:meme_app/pages/image%20editor/models/text_info.dart';
 import 'package:meme_app/pages/image%20editor/widgets/default_button.dart';
 import 'package:meme_app/pages/image%20editor/widgets/edit_image_view_model.dart';
 import 'package:meme_app/widgets/my_button.dart';
+import 'package:screenshot/screenshot.dart';
 
 import 'widgets/image_text.dart';
 
@@ -33,64 +37,71 @@ class _EditImageScreenState extends EditImageViewModel {
               SizedBox(height: 60),
               Padding(
                 padding: const EdgeInsets.all(5.0),
-                child: Stack(
-                  children: [
-                    Container(
-                      // height: MediaQuery.of(context).size.height * 0.45,
-                      height: 350,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          // fit: BoxFit.cover,
-                          image: FileImage(File(widget.selectedImage)),
-                        ),
-                      ),
-                    ),
-                    for (int i = 0; i < texts.length; i++)
-                      Positioned(
-                        left: texts[i].left,
-                        top: texts[i].top,
-                        child: GestureDetector(
-                          onLongPress: () {
-                            setState(() {
-                              currentIndex = i;
-                              removeText(context);
-                            });
-                          },
-                          onTap: (() {
-                            setCurrentIndex(context, i);
-                          }),
-                          child: Draggable(
-                            feedback: ImageText(textInfo: texts[i]),
-                            child: ImageText(textInfo: texts[i]),
-                            onDragEnd: (drag) {
-                              final renderBox =
-                                  context.findRenderObject() as RenderBox;
-                              Offset off = renderBox.globalToLocal(drag.offset);
-                              setState(() {
-                                texts[i].left = off.dx;
-                                texts[i].top = off.dy - 90 - 60;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                    creatorText.text.isNotEmpty
-                        ? Positioned(
-                            left: 0,
-                            bottom: 0,
-                            child: Text(
-                              creatorText.text,
-                              style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white.withOpacity(0.1),
+                child: Screenshot(
+                  controller: screenshotController,
+                  child: SizedBox(
+                    child: Stack(
+                      children: [
+                        Image.network(widget.selectedImage),
+                        // Container(
+                        //   // height: MediaQuery.of(context).size.height * 0.45,
+                        //   height: 350,
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.black,
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     image: DecorationImage(
+                        //       // fit: BoxFit.cover,
+                        //       image: FileImage(File(widget.selectedImage)),
+                        //     ),
+                        //   ),
+                        // ),
+                        for (int i = 0; i < texts.length; i++)
+                          Positioned(
+                            left: texts[i].left,
+                            top: texts[i].top,
+                            child: GestureDetector(
+                              onLongPress: () {
+                                setState(() {
+                                  currentIndex = i;
+                                  removeText(context);
+                                });
+                              },
+                              onTap: (() {
+                                setCurrentIndex(context, i);
+                              }),
+                              child: Draggable(
+                                feedback: ImageText(textInfo: texts[i]),
+                                child: ImageText(textInfo: texts[i]),
+                                onDragEnd: (drag) {
+                                  final renderBox =
+                                      context.findRenderObject() as RenderBox;
+                                  Offset off =
+                                      renderBox.globalToLocal(drag.offset);
+                                  setState(() {
+                                    texts[i].left = off.dx;
+                                    texts[i].top = off.dy - 90 - 60;
+                                  });
+                                },
                               ),
                             ),
-                          )
-                        : SizedBox.shrink()
-                  ],
+                          ),
+                        creatorText.text.isNotEmpty
+                            ? Positioned(
+                                left: 0,
+                                bottom: 0,
+                                child: Text(
+                                  creatorText.text,
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white.withOpacity(0.1),
+                                  ),
+                                ),
+                              )
+                            : SizedBox.shrink()
+                      ],
+                    ),
+                  ),
                 ),
               ),
               SizedBox(
@@ -254,7 +265,9 @@ class _EditImageScreenState extends EditImageViewModel {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MyButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    saveToGallery(context);
+                  },
                   child: ImageIcon(
                     AssetImage("assets/icons/download.png"),
                   ),
@@ -289,7 +302,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 //   ),
                 // ),
                 MyButton(
-                  onPressed: () {},
+                  onPressed: () async {},
                   child: ImageIcon(
                     AssetImage("assets/icons/share.png"),
                   ),
